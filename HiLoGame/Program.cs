@@ -23,5 +23,20 @@ static class HiLoGame
 {
     public const int MAXIMUM = 10;
     static Random random = new Random();
+    public static int currentNumber = random.Next(1, MAXIMUM);
+    private static int pot = 10; //equals number of bucks in the pot, must be private
 
+    public static int GetPot()
+    {
+        return pot;
+    }
+    public static void Guess(bool higher)
+    {
+
+    }
+
+    public static void Hint()
+    {
+
+    }
 }
