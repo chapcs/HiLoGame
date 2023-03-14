@@ -21,5 +21,7 @@
 
 static class HiLoGame
 {
+    public const int MAXIMUM = 10;
+    static Random random = new Random();
 
 }
