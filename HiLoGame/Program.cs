@@ -1,4 +1,6 @@
-﻿internal class Program
+﻿using System.Security.Cryptography.X509Certificates;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
@@ -23,7 +25,7 @@ static class HiLoGame
 {
     public const int MAXIMUM = 10;
     static Random random = new Random();
-    public static int currentNumber = random.Next(1, MAXIMUM);
+    public static int currentNumber = random.Next(1, MAXIMUM + 1);
     private static int pot = 10; //equals number of bucks in the pot, must be private
 
     public static int GetPot()
@@ -32,11 +34,27 @@ static class HiLoGame
     }
     public static void Guess(bool higher)
     {
-
+        int nextNumber = random.Next(1, MAXIMUM + 1);
+        if ((higher && nextNumber >= currentNumber) || (!higher && nextNumber <= currentNumber))
+        {
+            Console.WriteLine("You guessed right!");
+            pot++;
+        }
+        else
+        {
+            Console.WriteLine("Bad luck, you guessed wrong.");
+            pot--;
+        }
+        currentNumber = nextNumber;
+        Console.WriteLine($"The current number is {currentNumber}");
     }
 
     public static void Hint()
     {
-
+        int half = MAXIMUM / 2;
+        if (currentNumber >= half)
+            Console.WriteLine($"The number is at least {half}");
+        else Console.WriteLine($"The number is at most {half}");
+        pot--;
     }
 }
