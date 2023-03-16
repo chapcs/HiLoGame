@@ -12,7 +12,7 @@
             char key = Console.ReadKey(true).KeyChar;
             if (key == 'h') HiLoGame.Guess(true);
             else if (key == '1') HiLoGame.Guess(false);
-            else if (key == '2') HiLoGame.Hint();
+            else if (key == '?') HiLoGame.Hint();
             else return;
         }
         Console.WriteLine("The pot is empty and you are poor, bye . . .");
